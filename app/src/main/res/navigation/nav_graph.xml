@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentLibro">
+    app:startDestination="@id/homeScreen_Fragment">
 
     <fragment
         android:id="@+id/fragmentLibro"
@@ -17,7 +17,44 @@
         tools:layout="@layout/fragment_prestamo" />
     <fragment
         android:id="@+id/fragmentAddlibro"
-        android:name="com.example.libraryapproom.fragments.lista.add.FragmentAddlibro"
+        android:name="com.example.libraryapproom.fragments.agregar.FragmentAddlibro"
         android:label="fragment_addlibro"
-        tools:layout="@layout/fragment_addlibro" /><action android:id="@+id/action_global_fragmentAddlibro" app:destination="@id/fragmentAddlibro"/>
+        tools:layout="@layout/fragment_addlibro" />
+    <action android:id="@+id/action_global_fragmentAddlibro" app:destination="@id/fragmentAddlibro"/>
+    <action android:id="@+id/ir_a_actualizarlibro" app:destination="@id/actualizarLibro"/>
+    <action android:id="@+id/ir_a_listalibro" app:destination="@id/fragmentLibro"/>
+
+
+    <fragment
+        android:id="@+id/actualizarLibro"
+        android:name="com.example.libraryapproom.fragments.actualizar.ActualizarLibro"
+        android:label="fragment_actualizar_libro"
+        tools:layout="@layout/fragment_actualizar_libro" >
+        <argument android:name="currentLibro"
+            app:argType="com.example.libraryapproom.bd.entidades.LibrosModels" />
+        />
+    </fragment>
+    <fragment
+        android:id="@+id/addPrestamoFragment"
+        android:name="com.example.libraryapproom.fragments.agregar.AddPrestamoFragment"
+        android:label="fragment_add_prestamo"
+        tools:layout="@layout/fragment_add_prestamo" />
+    <fragment
+        android:id="@+id/actualizarPrestamoFragment"
+        android:name="com.example.libraryapproom.fragments.actualizar.ActualizarPrestamoFragment"
+        android:label="fragment_actualizar_prestamo"
+        tools:layout="@layout/fragment_actualizar_prestamo" >
+        <argument
+            android:name="currentPrestamo"
+            app:argType="com.example.libraryapproom.bd.entidades.PrestamosEntity" />
+    </fragment>
+
+    <action android:id="@+id/agregarPrestamo" app:destination="@+id/addPrestamoFragment"/>
+    <action android:id="@+id/editarPrestamo" app:destination="@+id/actualizarPrestamoFragment"/>
+    <action android:id="@+id/listaPrestamo" app:destination="@+id/fragmentPrestamo"/>
+    <fragment
+        android:id="@+id/homeScreen_Fragment"
+        android:name="com.example.libraryapproom.fragments.HomeScreen_Fragment"
+        android:label="fragment_home_screen_"
+        tools:layout="@layout/fragment_home_screen_" />
 </navigation>
